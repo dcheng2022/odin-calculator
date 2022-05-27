@@ -1,7 +1,4 @@
 /* 
-create operate function that takes an operator, two numbers
-and calls one of the functions on the numbers (do not allow division by 0)
-
 create function that populates display when number buttons are hit (DOM event listener)
 store display value as variable for further steps 
 
@@ -12,7 +9,7 @@ allow for stringing of operators, basically store a running total number for fur
 
 round numbers with long decimals to prevent display overflow 
 
-possibly write a clear function that resets all input variables 
+write a clear function that resets all input variables 
 */
 function operate(operator, num1, num2) {
     // function return should be passed to display function
@@ -47,6 +44,6 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if (b = 0) return "No. Just no.";
-    return a / b;
+    if (b === 0) return "No. Just no.";
+    return (a / b).toFixed(2);
 }
