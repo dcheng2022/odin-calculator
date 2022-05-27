@@ -14,6 +14,25 @@ round numbers with long decimals to prevent display overflow
 
 possibly write a clear function that resets all input variables 
 */
+function operate(operator, num1, num2) {
+    // function return should be passed to display function
+    switch (operator) {
+        case "+": 
+            add(num1, num2);
+            break;
+        case "-":
+            subtract(num1, num2);
+            break;
+        case "*":
+            multiply(num1, num2);
+            break;
+        case "/":
+            divide(num1, num2);
+            break;
+        default:
+            break;
+    }
+}
 
 function add(a, b) {
     return a + b;
