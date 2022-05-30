@@ -1,6 +1,7 @@
 const stringContainer = document.querySelector('.text-container');
 let stringArray = [];
 
+// need to prevent multi-digit call on operation results
 function display(string, result=false) {
     // executes upon events from keypad buttons 
     if (!isNaN(string) && !isNaN(stringArray[stringArray.length - 1]) && !result) {
@@ -60,5 +61,9 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if (b === 0) return "No. Just no.";
-    return (a / b).toFixed(2);
+    if (a % b !== 0) {
+        return (a / b).toFixed(2);
+    } else {
+        return (a / b);
+    }
 }
