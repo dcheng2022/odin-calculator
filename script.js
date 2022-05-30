@@ -1,5 +1,6 @@
 const stringContainer = document.querySelector('.text-container');
 let stringArray = [];
+let tempBlock = 0;
 
 // need to prevent multi-digit call on operation results
 function display(string, result=false) {
@@ -10,6 +11,8 @@ function display(string, result=false) {
         stringArray.push(string);
         stringContainer.textContent = string;
     }
+
+    tempBlock = (result) ? 1 : 0;
 
     if (stringArray.length > 3) {
         if (isNaN(string)) {
@@ -23,8 +26,15 @@ function display(string, result=false) {
 }
 
 function multiDigitUpdate(num) {
-    stringArray.splice(stringArray.length - 1, 1, parseInt(`${stringArray[stringArray.length - 1]}${num}`));
-    stringContainer.textContent = stringArray[stringArray.length - 1];
+    if (tempBlock) {
+        tempBlock = 0;
+        stringArray.push(num);
+        stringContainer.textContent = num;
+        return; 
+    } else {
+        stringArray.splice(stringArray.length - 1, 1, parseInt(`${stringArray[stringArray.length - 1]}${num}`));
+        stringContainer.textContent = stringArray[stringArray.length - 1];
+    }
 }
 
 function operate(num1, operator, num2) {
