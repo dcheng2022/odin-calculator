@@ -14,7 +14,7 @@ function display(string, result=false) {
     tempBlock = (result) ? 1 : 0;
 
     if (stringArray.length > 3) {
-        if (isNaN(string)) {
+        if (string === "+" || string === "-" || string === "*" || string === "/") {
             // this also executes non-sensical arrays which operate() handles
             const operator = stringArray.pop()
             operate(...stringArray); 
