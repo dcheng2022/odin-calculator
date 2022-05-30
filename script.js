@@ -2,7 +2,6 @@ const stringContainer = document.querySelector('.text-container');
 let stringArray = [];
 let tempBlock = 0;
 
-// need to prevent multi-digit call on operation results
 function display(string, result=false) {
     // executes upon events from keypad buttons 
     if (!isNaN(string) && !isNaN(stringArray[stringArray.length - 1]) && !result) {
