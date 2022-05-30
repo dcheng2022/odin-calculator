@@ -1,34 +1,45 @@
-/* 
-store display value as variable for further steps 
+const stringContainer = document.querySelector('.text-container');
+let stringArray = [];
 
-store first number input when a user presses an operator, save operator chosen, and call operate() function 
-when equals button is pressed 
+function display(string, result=false) {
+    // executes upon events from keypad buttons 
+    if (!isNaN(string) && !isNaN(stringArray[stringArray.length - 1]) && !result) {
+        multiDigitUpdate(string);
+    } else {
+        stringArray.push(string);
+        stringContainer.textContent = string;
+    }
 
-allow for stringing of operators, basically store a running total number for further operations 
+    if (stringArray.length > 3) {
+        if (isNaN(string)) {
+            // this also executes non-sensical arrays which operate() handles
+            const operator = stringArray.pop()
+            operate(...stringArray); 
+            stringArray.push(operator);
+        }
+        stringArray.splice(0, 1); 
+    } 
+}
 
-write a clear function that resets all input variables 
-*/
-function display(string) {
-    /* executes upon events from keypad buttons 
-    and also the operate() function
-    which executes when "=" is pressed */
-    const stringContainer = document.querySelector('.text-container');
-    stringContainer.textContent = string;
-} 
+function multiDigitUpdate(num) {
+    stringArray.splice(stringArray.length - 1, 1, parseInt(`${stringArray[stringArray.length - 1]}${num}`));
+    stringContainer.textContent = stringArray[stringArray.length - 1];
+}
 
-function operate(operator, num1, num2) {
+function operate(num1, operator, num2) {
+    // "=" button event listener executes operate(...stringArray, true);
     switch (operator) {
         case "+": 
-            display(add(num1, num2));
+            display(add(num1, num2), true);
             break;
         case "-":
-            display(subtract(num1, num2));
+            display(subtract(num1, num2), true);
             break;
         case "*":
-            display(multiply(num1, num2));
+            display(multiply(num1, num2), true);
             break;
         case "/":
-            display(divide(num1, num2));
+            display(divide(num1, num2), true);
             break;
         default:
             break;
