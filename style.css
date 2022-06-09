@@ -6,11 +6,18 @@ body {
     align-items: center;
 }
 
+.calculator {
+    padding: 5px 10px;
+    background-color: #363636;
+}
+
 .text-container {
     max-width: 292px;
     overflow: hidden;
-    font-size: 40px;
+    font-size: 42px;
     text-align: right;
+    margin: 5px 0px;
+    background-color: #9c9898;
 }
 
 .row {
