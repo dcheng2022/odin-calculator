@@ -29,10 +29,10 @@ function multiDigitUpdate(num) {
         tempBlock = 0;
         stringArray.push(num);
         stringContainer.textContent = num;
-        return; 
     } else {
-        stringArray.splice(stringArray.length - 1, 1, parseInt(`${stringArray[stringArray.length - 1]}${num}`));
-        stringContainer.textContent = stringArray[stringArray.length - 1];
+        const prevNum = stringArray.length - 1;
+        stringArray.splice(prevNum, 1, parseInt(`${stringArray[prevNum]}${num}`));
+        stringContainer.textContent = stringArray[prevNum];
     }
 }
 
