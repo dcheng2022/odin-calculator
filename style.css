@@ -1,0 +1,15 @@
+button {
+    width: 70px;
+    padding: 20px 0px;
+    font-size: 24px;
+    background-color: #ebe8f9;
+    border: 0px;
+}
+
+.color {
+    background-color: #7c66d7;
+}
+
+.operate, .clear {
+    background-color: #654cd1;
+}
