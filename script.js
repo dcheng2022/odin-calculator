@@ -1,8 +1,31 @@
 const stringContainer = document.querySelector('.text-container');
+const clearButton = document.querySelector('.clear');
+const operateButton = document.querySelector('.operate');
+const displayButtons = document.querySelectorAll('.display');
 let stringArray = [];
 let tempBlock = 0;
 
-function display(string, result=false) {
+clearButton.addEventListener('click', () => {
+    stringContainer.textContent = "";
+    stringArray = [];
+    tempBlock = 0;
+})
+
+operateButton.addEventListener('click', () => {
+    operate(...stringArray);
+})
+
+displayButtons.forEach((button) => { 
+    button.addEventListener('click', () => {
+        if (button.textContent === "+" || button.textContent === "-" || button.textContent === "*" || button.textContent === "/") {
+            display(button.textContent, false, true);
+        } else {
+            display(Number(button.textContent));
+        }
+    })
+})
+
+function display(string, result=false, operator=false) {
     // executes upon events from keypad buttons 
     if (!isNaN(string) && !isNaN(stringArray[stringArray.length - 1]) && !result) {
         multiDigitUpdate(string);
@@ -14,7 +37,7 @@ function display(string, result=false) {
     tempBlock = (result) ? 1 : 0;
 
     if (stringArray.length > 3) {
-        if (string === "+" || string === "-" || string === "*" || string === "/") {
+        if (operator) {
             // this also executes non-sensical arrays which operate() handles
             const operator = stringArray.pop()
             operate(...stringArray); 
