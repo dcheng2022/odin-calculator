@@ -92,9 +92,12 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if (b === 0) return "No. Just no.";
+    if (b === 0) {
+        alert("Stop trying to break my calculator.");
+        return 0;
+    }
     if (a % b !== 0) {
-        return (a / b).toFixed(2);
+        return Number((a / b).toFixed(2));
     } else {
         return (a / b);
     }
