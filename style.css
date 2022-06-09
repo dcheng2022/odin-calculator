@@ -13,6 +13,10 @@ body {
     text-align: right;
 }
 
+.row {
+    margin: 4px 0px;
+}
+
 button {
     width: 70px;
     padding: 20px 0px;
