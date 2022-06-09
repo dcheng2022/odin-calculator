@@ -6,7 +6,7 @@ let stringArray = [];
 let tempBlock = 0;
 
 clearButton.addEventListener('click', () => {
-    stringContainer.textContent = "";
+    stringContainer.textContent = "0";
     stringArray = [];
     tempBlock = 0;
 })
